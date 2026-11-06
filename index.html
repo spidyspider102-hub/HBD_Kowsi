@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎂 Happy Birthday Kowsi! ✨ | A Special Surprise</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ============================================ -->
+    <!-- 1. ENVELOPE / GIFT UNBOXING SURPRISE GATE    -->
+    <!-- ============================================ -->
+    <div id="surprise-gate" class="surprise-gate">
+        <div class="stars-bg"></div>
+        <div class="gate-card">
+            <div class="gift-box-wrapper">
+                <div class="floating-gift" id="gift-icon">
+                    <div class="gift-sparkles">✨</div>
+                    <div class="gift-box">
+                        <div class="gift-lid"></div>
+                        <div class="gift-ribbon-vertical"></div>
+                        <div class="gift-ribbon-horizontal"></div>
+                        <div class="gift-bow">🎀</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gate-badge">Special Delivery For Kowsi 💌</div>
+            <h1 class="gate-title">A Magical Birthday Surprise Awaits...</h1>
+            <p class="gate-subtitle">Put your headphones on 🎧, turn up the volume, and get ready for a journey made especially for you!</p>
+
+            <button id="open-surprise-btn" class="glow-btn">
+                <span>Open Your Birthday Surprise</span>
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </button>
+            <span class="gate-hint">✨ Tap to unwrap & play celebration music ✨</span>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- 2. SCANNING & MATCHING PRELOADER             -->
+    <!-- ============================================ -->
+    <div id="loader-screen" class="loader-screen">
+        <div class="loader-content">
+            <div id="scanning-step" class="scanning-step">
+                <div class="radar-circle">
+                    <div class="radar-pulse"></div>
+                    <i class="fa-solid fa-cake-candles radar-icon"></i>
+                </div>
+                <h2 id="scanner-status" class="scanning-title">Locating the Birthday Queen...</h2>
+                <div class="progress-bar-container">
+                    <div id="progress-fill" class="progress-bar-fill"></div>
+                </div>
+                <p id="scanner-detail" class="scanning-sub">Searching 365 days of smiles & memories...</p>
+            </div>
+
+            <div id="match-step" class="match-step" style="display: none;">
+                <div class="match-heart-pop">👑</div>
+                <h2 class="match-found-title">Match Found: Kowsi! 💖</h2>
+                <p class="match-found-sub">The most awesome, irreplaceable, and radiant best friend in the world!</p>
+                <div class="sparkle-loader">🎉 Ready to Celebrate 🎉</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- 3. MAIN WEBSITE CONTAINER                    -->
+    <!-- ============================================ -->
+    <div id="main-content" class="main-content">
+
+        <!-- FLOATING MUSIC PLAYER -->
+        <div class="floating-player-bar">
+            <button id="music-toggle-btn" class="music-pill-btn" aria-label="Toggle Music">
+                <div class="vinyl-disc" id="vinyl-disc">
+                    <i class="fa-solid fa-compact-disc"></i>
+                </div>
+                <div class="music-meta">
+                    <span class="music-label">Birthday Melody 🎵</span>
+                    <span id="music-status" class="music-playing-txt">Tap to Play</span>
+                </div>
+                <div class="sound-waves" id="sound-waves">
+                    <span></span><span></span><span></span><span></span>
+                </div>
+            </button>
+            <button id="confetti-popper-btn" class="confetti-bubble-btn" title="Pop More Confetti!">
+                🎉
+            </button>
+        </div>
+
+        <!-- NAVIGATION -->
+        <header class="site-header">
+            <div class="header-inner">
+                <a href="#home" class="brand-logo">
+                    <span class="brand-crown">👑</span>
+                    <span class="brand-text">Kowsi's Day</span>
+                </a>
+
+                <nav class="desktop-nav">
+                    <a href="#home" class="nav-item active"><i class="fa-solid fa-house"></i> Home</a>
+                    <a href="#cake-section" class="nav-item"><i class="fa-solid fa-cake-candles"></i> Cake & Wish</a>
+                    <a href="#traits-section" class="nav-item"><i class="fa-solid fa-gem"></i> Why Kowsi?</a>
+                    <a href="#gallery-section" class="nav-item"><i class="fa-solid fa-images"></i> Memories</a>
+                    <a href="#wishes-jar-section" class="nav-item"><i class="fa-solid fa-envelope-open-text"></i> Wishes Jar</a>
+                    <a href="#letter-section" class="nav-item"><i class="fa-solid fa-heart"></i> Letter</a>
+                </nav>
+
+                <a href="#finale-section" class="finale-nav-btn">
+                    <span>Grand Finale</span> <i class="fa-solid fa-sparkles"></i>
+                </a>
+            </div>
+        </header>
+
+        <!-- FLOATING AMBIENT BALLOONS -->
+        <div class="ambient-balloons-container" aria-hidden="true">
+            <div class="balloon b1">🎈</div>
+            <div class="balloon b2">🌸</div>
+            <div class="balloon b3">🎈</div>
+            <div class="balloon b4">✨</div>
+            <div class="balloon b5">🎈</div>
+            <div class="balloon b6">💖</div>
+            <div class="balloon b7">🎈</div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 1: HERO                              -->
+        <!-- ============================================ -->
+        <section id="home" class="hero-section">
+            <div class="hero-glow-blob blob-1"></div>
+            <div class="hero-glow-blob blob-2"></div>
+
+            <div class="hero-container">
+                <div class="hero-text-col">
+                    <div class="birthday-pill">
+                        <span class="pill-dot"></span>
+                        <span>Official Birthday Celebration • November 7</span>
+                        <span class="party-emoji">🎂</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        Happy Birthday, <br>
+                        <span class="gradient-name">Kowsi!</span> 🌸✨
+                    </h1>
+
+                    <p class="hero-quote">
+                        <em>"Some people make the world more special just by being in it. Kowsi, you're definitely one of them."</em>
+                    </p>
+
+                    <p class="hero-description">
+                        Today is all about you! Every laugh we've shared, every random talk, every hilarious moment, and every memory has made life so much brighter. Thank you for being the most genuine, caring, and incredible best friend.
+                    </p>
+
+                    <!-- QUICK STATS CHIPS -->
+                    <div class="hero-stats-row">
+                        <div class="stat-card">
+                            <span class="stat-number">365+</span>
+                            <span class="stat-label">Days of Smiles</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">∞</span>
+                            <span class="stat-label">Best Friend Level</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Queen Energy</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a href="#cake-section" class="btn btn-primary">
+                            <i class="fa-solid fa-cake-candles"></i> Cut Your Birthday Cake
+                        </a>
+                        <a href="#gallery-section" class="btn btn-secondary">
+                            <i class="fa-solid fa-camera-retro"></i> Explore Memories
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-media-col">
+                    <div class="hero-polaroid-frame">
+                        <div class="washi-tape tape-top"></div>
+                        <div class="polaroid-pin">📍</div>
+                        <div class="polaroid-inner-img">
+                            <img src="assets/IMG-20250502-WA0019.jpg" alt="Kowsi - The Birthday Queen">
+                            <div class="shimmer-effect"></div>
+                        </div>
+                        <div class="polaroid-caption">
+                            <h3>Kowsi 👑✨</h3>
+                            <p>The Queen of today & forever!</p>
+                        </div>
+                        <div class="polaroid-badge">November 2026 💖</div>
+                    </div>
+
+                    <!-- FLOATING STICKERS -->
+                    <div class="sticker-bubble s1">🌸 Cutest Friend</div>
+                    <div class="sticker-bubble s2">🎂 Level Up!</div>
+                    <div class="sticker-bubble s3">💛 Golden Heart</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SECTION 2: INTERACTIVE CAKE CUTTING          -->
+        <!-- ============================================ -->
+        <section id="cake-section" class="cake-section">
+            <div class="section-badge"><i class="fa-solid fa-cake-candles"></i> Time to Make a Wish</div>
+            <h2 class="section-title">Blow the Candles & Cut the Cake! 🎂</h2>
+            <p class="section-subtitle">No birthday celebration is complete without cake! Tap the candle to blow it out, make your heartfelt wish, and slice the cake!</p>
+
+            <div class="cake-interactive-stage">
+                <!-- VIRTUAL CAKE -->
+                <div class="cake-assembly" id="cake-assembly">
+                    <!-- CANDLE -->
+                    <div class="candle" id="candle-stick">
+                        <div class="candle-flame" id="candle-flame"></div>
+                        <div class="smoke-wisp" id="smoke-wisp"></div>
+                    </div>
+
+                    <!-- TOPPING CHERRIES / STRAWBERRIES -->
+                    <div class="cake-toppings">
+                        <span class="topping t1">🍓</span>
+                        <span class="topping t2">✨</span>
+                        <span class="topping t3">🍓</span>
+                        <span class="topping t4">✨</span>
+                        <span class="topping t5">🍓</span>
+                    </div>
+
+                    <!-- TIER 2 (TOP) -->
+                    <div class="cake-tier cake-tier-top">
+                        <div class="frosting-drips">
+                            <span></span><span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <div class="cake-sprinkles"></div>
+                        <div class="cake-text">Kowsi</div>
+                    </div>
+
+                    <!-- TIER 1 (BASE) -->
+                    <div class="cake-tier cake-tier-bottom">
+                        <div class="frosting-drips">
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <div class="cake-sprinkles"></div>
+                        <div class="cake-base-text">Happy Birthday 🌸</div>
+                    </div>
+
+                    <!-- CAKE STAND / PLATE -->
+                    <div class="cake-stand"></div>
+                </div>
+
+                <!-- CAKE CONTROLS -->
+                <div class="cake-controls">
+                    <button id="blow-candle-btn" class="interactive-btn btn-blow">
+                        <i class="fa-solid fa-wind"></i>
+                        <span>Blow the Candles 🌬️</span>
+                    </button>
+
+                    <button id="cut-cake-btn" class="interactive-btn btn-cut" disabled>
+                        <i class="fa-solid fa-knife"></i>
+                        <span>Cut The Cake 🍰</span>
+                    </button>
+
+                    <button id="reset-cake-btn" class="interactive-btn btn-reset" style="display: none;">
+                        <i class="fa-solid fa-rotate-right"></i>
+                        <span>Light Again 🕯️</span>
+                    </button>
+                </div>
+
+                <!-- WISH POPUP NOTIFICATION -->
+                <div id="cake-message-banner" class="cake-message-banner">
+                    <div class="banner-icon">🎉</div>
+                    <div class="banner-text">
+                        <h4 id="banner-title">Make a wish, Kowsi! 🌟</h4>
+                        <p id="banner-desc">Close your eyes for 3 seconds and wish for anything your heart desires!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SECTION 3: WHY KOWSI IS UNMATCHED (TRAITS)   -->
+        <!-- ============================================ -->
+        <section id="traits-section" class="traits-section">
+            <div class="section-badge"><i class="fa-solid fa-gem"></i> The Kowsi Spectrum</div>
+            <h2 class="section-title">6 Things That Make You Uniquely Wonderful 💛</h2>
+            <p class="section-subtitle">There are over 8 billion people on this planet, but nobody brings this much warmth, laughter, and genuine energy into life.</p>
+
+            <div class="traits-grid">
+                <!-- CARD 1 -->
+                <div class="trait-card">
+                    <div class="trait-icon-wrapper icon-pink">
+                        <i class="fa-solid fa-face-grin-beam"></i>
+                    </div>
+                    <h3 class="trait-title">That Contagious Smile</h3>
+                    <p class="trait-text">Your smile has an effortless way of lighting up the heaviest days. Even on stressful days, your laugh is pure therapy!</p>
+                    <div class="trait-tag">#SunshineVibes ☀️</div>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="trait-card">
+                    <div class="trait-icon-wrapper icon-yellow">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <h3 class="trait-title">A Heart of Pure Gold</h3>
+                    <p class="trait-text">Caring, thoughtful, and instinctively noticing when someone needs a boost. The kindness you give to others is truly admirable.</p>
+                    <div class="trait-tag">#PureHeart 💛</div>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="trait-card">
+                    <div class="trait-icon-wrapper icon-purple">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="trait-title">Unapologetically Strong</h3>
+                    <p class="trait-text">The way you stand up for yourself, hold your ground with dignity, and stay true to your values. You inspire more than you realize.</p>
+                    <div class="trait-tag">#BossEnergy 👑</div>
+                </div>
+
+                <!-- CARD 4 -->
+                <div class="trait-card">
+                    <div class="trait-icon-wrapper icon-rose">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <h3 class="trait-title">Endless Late-Night Talks</h3>
+                    <p class="trait-text">From silly gossip and spontaneous jokes to deep life philosophies at midnight. Talking with you never feels exhausting or rushed.</p>
+                    <div class="trait-tag">#SoulTalks 🌙</div>
+                </div>
+
+                <!-- CARD 5 -->
+                <div class="trait-card">
+                    <div class="trait-icon-wrapper icon-teal">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="trait-title">Always Supportive</h3>
+                    <p class="trait-text">Through ups and downs, achievements and rough days, knowing you are in my corner is one of the greatest blessings.</p>
+                    <div class="trait-tag">#SolidRock 🤝</div>
+                </div>
+
+                <!-- CARD 6 -->
+                <div class="trait-card">
+                    <div class="trait-icon-wrapper icon-orange">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 class="trait-title">The Funniest Moments</h3>
+                    <p class="trait-text">Random funny expressions, inside jokes that nobody else understands, and laughing until our stomachs hurt. Unforgettable fun!</p>
+                    <div class="trait-tag">#CrazyMemories 😂</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SECTION 4: SCRAPBOOK PHOTO MEMORIES GALLERY  -->
+        <!-- ============================================ -->
+        <section id="gallery-section" class="gallery-section">
+            <div class="section-badge"><i class="fa-solid fa-camera-retro"></i> Polaroid Archives</div>
+            <h2 class="section-title">Smiles We'll Never Forget 📸💕</h2>
+            <p class="section-subtitle">Every photograph holds a story, a burst of laughter, and a moment frozen in time. Tap any photo to take a closer look!</p>
+
+            <div class="scrapbook-wall">
+                <!-- POLAROID 1 -->
+                <div class="polaroid-item tilt-left" data-title="The Birthday Queen" data-caption="Always rocking that bright smile and radiant energy! Never stop shining, Kowsi! 🌸" data-src="assets/IMG-20260503-WA0030.jpg">
+                    <div class="washi-tape tape-pink"></div>
+                    <div class="polaroid-photo">
+                        <img src="assets/IMG-20260503-WA0030.jpg" alt="The Birthday Queen">
+                    </div>
+                    <div class="polaroid-footer">
+                        <p class="caption-handwritten">The One & Only Kowsi 👑</p>
+                        <button class="love-counter-btn" aria-label="Like Memory"><i class="fa-solid fa-heart"></i> <span class="likes-count">108</span></button>
+                    </div>
+                </div>
+
+                <!-- POLAROID 2 -->
+                <div class="polaroid-item tilt-right" data-title="Radiant Beauty" data-caption="Glowing with that natural grace and beauty! ✨" data-src="assets/IMG-20260510-WA0007.jpg">
+                    <div class="washi-tape tape-yellow"></div>
+                    <div class="polaroid-photo">
+                        <img src="assets/IMG-20260510-WA0007.jpg" alt="Radiant Memory">
+                    </div>
+                    <div class="polaroid-footer">
+                        <p class="caption-handwritten">Golden Glow 🌸</p>
+                        <button class="love-counter-btn" aria-label="Like Memory"><i class="fa-solid fa-heart"></i> <span class="likes-count">135</span></button>
+                    </div>
+                </div>
+
+                <!-- POLAROID 3 -->
+                <div class="polaroid-item tilt-straight" data-title="Cherished Memory" data-caption="A special moment that brings back the warmest smiles! 💖" data-src="assets/file_000000002a588211bd4839116f778952.png">
+                    <div class="washi-tape tape-purple"></div>
+                    <div class="polaroid-photo">
+                        <img src="assets/file_000000002a588211bd4839116f778952.png" alt="Memory Photo">
+                    </div>
+                    <div class="polaroid-footer">
+                        <p class="caption-handwritten">Cherished Moments 💕</p>
+                        <button class="love-counter-btn" aria-label="Like Memory"><i class="fa-solid fa-heart"></i> <span class="likes-count">172</span></button>
+                    </div>
+                </div>
+
+                <!-- POLAROID 4 -->
+                <div class="polaroid-item tilt-left" data-title="Happy Birthday Special" data-caption="Celebrating Kowsi's special day with all the joy in the world! 🎂" data-src="assets/Happy Birthday.jpg">
+                    <div class="washi-tape tape-pink"></div>
+                    <div class="polaroid-photo">
+                        <img src="assets/Happy Birthday.jpg" alt="Happy Birthday">
+                    </div>
+                    <div class="polaroid-footer">
+                        <p class="caption-handwritten">Celebrate Every Moment 🎂</p>
+                        <button class="love-counter-btn" aria-label="Like Memory"><i class="fa-solid fa-heart"></i> <span class="likes-count">142</span></button>
+                    </div>
+                </div>
+
+                <!-- POLAROID 5 -->
+                <div class="polaroid-item tilt-right" data-title="Aesthetic Story" data-caption="Special memories documented through time. 🌷" data-src="assets/Minimalist New Post Instagram Story_20251220_084607_0000.png">
+                    <div class="washi-tape tape-yellow"></div>
+                    <div class="polaroid-photo">
+                        <img src="assets/Minimalist New Post Instagram Story_20251220_084607_0000.png" alt="Story Memory">
+                    </div>
+                    <div class="polaroid-footer">
+                        <p class="caption-handwritten">Aesthetic Story 🌷</p>
+                        <button class="love-counter-btn" aria-label="Like Memory"><i class="fa-solid fa-heart"></i> <span class="likes-count">118</span></button>
+                    </div>
+                </div>
+
+                <!-- POLAROID 6 -->
+                <div class="polaroid-item tilt-straight" data-title="Sweet Smiles" data-caption="Pure happiness and unforgettable smiles together! 🌸" data-src="assets/IMG-20250222-WA0017.jpg">
+                    <div class="washi-tape tape-purple"></div>
+                    <div class="polaroid-photo">
+                        <img src="assets/IMG-20250222-WA0017.jpg" alt="Smiles Memory">
+                    </div>
+                    <div class="polaroid-footer">
+                        <p class="caption-handwritten">Sweet Smiles 🌸</p>
+                        <button class="love-counter-btn" aria-label="Like Memory"><i class="fa-solid fa-heart"></i> <span class="likes-count">96</span></button>
+                    </div>
+                </div>
+
+                <!-- POLAROID 7 -->
+                <div class="polaroid-item tilt-left" data-title="Golden Adventure" data-caption="Every snapshot tells a story of unconditional friendship. 💫" data-src="assets/IMG-20250331-WA0027.jpg">
+                    <div class="washi-tape tape-pink"></div>
+                    <div class="polaroid-photo">
+                        <img src="assets/IMG-20250331-WA0027.jpg" alt="Adventure Memory">
+                    </div>
+                    <div class="polaroid-footer">
+                        <p class="caption-handwritten">Unforgettable Days ✨</p>
+                        <button class="love-counter-btn" aria-label="Like Memory"><i class="fa-solid fa-heart"></i> <span class="likes-count">125</span></button>
+                    </div>
+                </div>
+
+                <!-- POLAROID 8 -->
+                <div class="polaroid-item tilt-right" data-title="Birthday Queen Sparkle" data-caption="Another year older, another year more fabulous! 💖" data-src="assets/IMG-20241105-WA0015.jpg">
+                    <div class="washi-tape tape-yellow"></div>
+                    <div class="polaroid-photo">
+                        <img src="assets/IMG-20241105-WA0015.jpg" alt="Queen Memory">
+                    </div>
+                    <div class="polaroid-footer">
+                        <p class="caption-handwritten">Birthday Sparkle 💫</p>
+                        <button class="love-counter-btn" aria-label="Like Memory"><i class="fa-solid fa-heart"></i> <span class="likes-count">150</span></button>
+                    </div>
+                </div>
+
+                <!-- POLAROID 9 -->
+                <div class="polaroid-item tilt-straight" data-title="Partners in Crime" data-caption="Double trouble, endless giggles, and lifelong friendship. 🤝✨" data-src="assets/IMG-20241103-WA0003.jpg">
+                    <div class="washi-tape tape-purple"></div>
+                    <div class="polaroid-photo">
+                        <img src="assets/IMG-20241103-WA0003.jpg" alt="Friends Photo">
+                    </div>
+                    <div class="polaroid-footer">
+                        <p class="caption-handwritten">Partners in Crime 👯‍♀️</p>
+                        <button class="love-counter-btn" aria-label="Like Memory"><i class="fa-solid fa-heart"></i> <span class="likes-count">164</span></button>
+                    </div>
+                </div>
+
+                <!-- POLAROID 10 -->
+                <div class="polaroid-item tilt-left" data-title="Memories to Cherish" data-caption="Times that always warm the heart looking back! 💛" data-src="assets/IMG-20241005-WA0002.jpg">
+                    <div class="washi-tape tape-pink"></div>
+                    <div class="polaroid-photo">
+                        <img src="assets/IMG-20241005-WA0002.jpg" alt="Cherish Memory">
+                    </div>
+                    <div class="polaroid-footer">
+                        <p class="caption-handwritten">Pure Memories 💛</p>
+                        <button class="love-counter-btn" aria-label="Like Memory"><i class="fa-solid fa-heart"></i> <span class="likes-count">138</span></button>
+                    </div>
+                </div>
+
+                <!-- POLAROID 11 -->
+                <div class="polaroid-item tilt-right" data-title="Through The Years" data-caption="A friendship that stands strong and grows sweeter through the years! 🎈" data-src="assets/IMG-20221106-WA0006.jpg">
+                    <div class="washi-tape tape-yellow"></div>
+                    <div class="polaroid-photo">
+                        <img src="assets/IMG-20221106-WA0006.jpg" alt="Memory Photo">
+                    </div>
+                    <div class="polaroid-footer">
+                        <p class="caption-handwritten">Through The Years 🎈</p>
+                        <button class="love-counter-btn" aria-label="Like Memory"><i class="fa-solid fa-heart"></i> <span class="likes-count">159</span></button>
+                    </div>
+                </div>
+
+                <!-- POLAROID 12 -->
+                <div class="polaroid-item tilt-straight" data-title="Unbreakable Bond" data-caption="No matter where life takes us, this bond stays unbreakable! 🔒💖" data-src="assets/IMG-20221106-WA0019.jpg">
+                    <div class="washi-tape tape-purple"></div>
+                    <div class="polaroid-photo">
+                        <img src="assets/IMG-20221106-WA0019.jpg" alt="Friends Memory">
+                    </div>
+                    <div class="polaroid-footer">
+                        <p class="caption-handwritten">Forever Friends 🤝</p>
+                        <button class="love-counter-btn" aria-label="Like Memory"><i class="fa-solid fa-heart"></i> <span class="likes-count">182</span></button>
+                    </div>
+                </div>
+
+                <!-- POLAROID 13 -->
+                <div class="polaroid-item tilt-left" data-title="Milestone Celebration" data-caption="Milestones and memories that shine like gold! ✨" data-src="assets/IMG-20211106-WA0024.jpg">
+                    <div class="washi-tape tape-pink"></div>
+                    <div class="polaroid-photo">
+                        <img src="assets/IMG-20211106-WA0024.jpg" alt="Milestone Memory">
+                    </div>
+                    <div class="polaroid-footer">
+                        <p class="caption-handwritten">Milestone Smiles 💖</p>
+                        <button class="love-counter-btn" aria-label="Like Memory"><i class="fa-solid fa-heart"></i> <span class="likes-count">194</span></button>
+                    </div>
+                </div>
+
+                <!-- POLAROID 14 -->
+                <div class="polaroid-item tilt-right" data-title="Golden Smile" data-caption="A radiant smile that makes every memory special! 🌸✨" data-src="assets/IMG-20261017-WA0001.jpg">
+                    <div class="washi-tape tape-yellow"></div>
+                    <div class="polaroid-photo">
+                        <img src="assets/IMG-20261017-WA0001.jpg" alt="Golden Memory">
+                    </div>
+                    <div class="polaroid-footer">
+                        <p class="caption-handwritten">Radiant Moments 🌸</p>
+                        <button class="love-counter-btn" aria-label="Like Memory"><i class="fa-solid fa-heart"></i> <span class="likes-count">210</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIGHTBOX MODAL FOR MEMORIES -->
+        <div id="gallery-modal" class="gallery-modal" aria-hidden="true">
+            <div class="modal-backdrop"></div>
+            <div class="modal-box">
+                <button id="modal-close-btn" class="modal-close" aria-label="Close modal">&times;</button>
+                <div class="modal-image-wrapper">
+                    <img id="modal-img" src="" alt="Zoomed Memory">
+                </div>
+                <div class="modal-content">
+                    <h3 id="modal-title">Memory Title</h3>
+                    <p id="modal-caption">Memory Description...</p>
+                    <div class="modal-reactions">
+                        <button id="modal-heart-btn" class="modal-heart-action">
+                            <i class="fa-solid fa-heart"></i> Send Floating Hearts
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 5: INTERACTIVE WISHES JAR & FORTUNE  -->
+        <!-- ============================================ -->
+        <section id="wishes-jar-section" class="wishes-jar-section">
+            <div class="section-badge"><i class="fa-solid fa-wand-magic"></i> Interactive Wish Generator</div>
+            <h2 class="section-title">The Secret Birthday Capsule Jar 🥠✨</h2>
+            <p class="section-subtitle">Tap the magical jar to draw a personalized birthday message, fortune, and blessing written just for you!</p>
+
+            <div class="jar-interactive-container">
+                <div class="jar-visual-box" id="jar-box">
+                    <div class="jar-container">
+                        <div class="jar-lid"></div>
+                        <div class="jar-neck"></div>
+                        <div class="jar-body">
+                            <div class="glowing-stars-inside">
+                                <span>⭐</span><span>✨</span><span>🌟</span><span>💫</span><span>💖</span>
+                            </div>
+                            <div class="jar-label">
+                                <span>Kowsi's Jar</span>
+                                <small>Tap to Draw 💌</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jar-message-display" id="jar-card">
+                    <div class="capsule-chip">Birthday Blessing #<span id="capsule-num">1</span></div>
+                    <div class="capsule-quote-icon">❝</div>
+                    <p id="capsule-text" class="capsule-text">
+                        "May your new year be blessed with overflowing happiness, genuine peace, dream achievements, and people who recognize the diamond that you are."
+                    </p>
+                    <div class="capsule-author">— From Your Best Friend 🌸</div>
+                    
+                    <button id="draw-next-wish-btn" class="btn btn-primary draw-btn">
+                        <i class="fa-solid fa-sparkles"></i> Draw Another Blessing ✨
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SECTION 6: HEARTFELT BIRTHDAY LETTER         -->
+        <!-- ============================================ -->
+        <section id="letter-section" class="letter-section">
+            <div class="section-badge"><i class="fa-solid fa-envelope"></i> Straight From The Heart</div>
+            <h2 class="section-title">A Letter For You, Kowsi 💌</h2>
+            <p class="section-subtitle">Words can barely express what an impact your presence has made. Here's a little reminder of how appreciated you are.</p>
+
+            <div class="parchment-letter-wrapper">
+                <div class="wax-seal">
+                    <span>👑</span>
+                </div>
+
+                <div class="parchment-letter">
+                    <div class="letter-header">
+                        <span class="letter-date">November 2026</span>
+                        <span class="letter-stamp">💌 FOR KOWSI</span>
+                    </div>
+
+                    <h3 class="letter-salutation">Dear Kowsi,</h3>
+
+                    <p class="letter-body">
+                        Happy Birthday! 🎂✨
+                    </p>
+                    <p class="letter-body">
+                        Today is a special celebration not just because it's your birthday, but because of the wonderful human being that you are. Over time, through every conversation, every silly giggle, and all our shared moments, you've continuously shown what genuine, loyal friendship looks like.
+                    </p>
+                    <p class="letter-body">
+                        Thank you for your warmth, your kindness, and the way you always bring a spark of positivity wherever you walk. You hold a strength in you that handles challenges with grace, and a smile that makes everything around you feel a little lighter and warmer.
+                    </p>
+                    <p class="letter-body">
+                        As you step into this exciting new year of your life, I wish you boundless health, unshakeable peace of mind, immense success in everything you set your sights on, and endless reasons to celebrate. Never doubt how capable, beautiful, and truly special you are.
+                    </p>
+                    <p class="letter-body">
+                        No matter where our paths take us or how fast time flies by, you will always have a steadfast friend cheering for you in your corner.
+                    </p>
+
+                    <div class="letter-signoff">
+                        <p>With all my warmest wishes and love,</p>
+                        <h4 class="handwritten-signature">Your Best Friend Forever 💖</h4>
+                    </div>
+
+                    <div class="letter-highlight-box">
+                        <i class="fa-solid fa-gift"></i>
+                        <p><strong>Birthday Promise:</strong> May this year bring you closer to all your dreams. Keep shining bright, Birthday Queen! 🌟</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SECTION 7: VIRTUAL GUESTBOOK / WISH BOARD    -->
+        <!-- ============================================ -->
+        <section id="guestbook-section" class="guestbook-section">
+            <div class="section-badge"><i class="fa-solid fa-pen-nib"></i> Birthday Guestbook</div>
+            <h2 class="section-title">Leave a Birthday Note for Kowsi ✍️💖</h2>
+            <p class="section-subtitle">Add a sweet birthday note, funny memory, or wish for Kowsi to read anytime!</p>
+
+            <div class="guestbook-container">
+                <div class="guestbook-form-card">
+                    <h3>Write a Birthday Note 📝</h3>
+                    <form id="wish-form">
+                        <div class="input-group">
+                            <label for="wish-author"><i class="fa-solid fa-user"></i> Your Name:</label>
+                            <input type="text" id="wish-author" placeholder="e.g. Spidy / Best Friend" required maxlength="30">
+                        </div>
+                        <div class="input-group">
+                            <label for="wish-message"><i class="fa-solid fa-message"></i> Your Birthday Message:</label>
+                            <textarea id="wish-message" rows="3" placeholder="Write something sweet, funny, or memorable for Kowsi..." required maxlength="250"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary submit-wish-btn">
+                            <i class="fa-solid fa-paper-plane"></i> Post Birthday Note
+                        </button>
+                    </form>
+                </div>
+
+                <div class="guestbook-wall-wrapper">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.4rem;">
+                        <h3 style="margin-bottom: 0;">Sticky Notes Wall 📌</h3>
+                        <button id="reset-wishes-btn" class="reset-notes-btn" title="Reset to original wishes">Reset Notes 🔄</button>
+                    </div>
+                    <div id="sticky-notes-wall" class="sticky-notes-wall">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SECTION 8: GRAND FINALE TRIGGER              -->
+        <!-- ============================================ -->
+        <section id="finale-section" class="finale-section">
+            <div class="finale-card">
+                <div class="finale-icon-aura">🎆</div>
+                <h2 class="finale-heading">One Last Midnight Surprise for You...</h2>
+                <p class="finale-text">A private, cinematic firework celebration & heartfelt message waiting to be revealed.</p>
+                
+                <button id="launch-finale-btn" class="btn btn-finale">
+                    <span>Reveal Kowsi's Grand Finale ✨</span>
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="site-footer">
+            <div class="footer-container">
+                <p class="footer-quote">
+                    <em>"Friendship is one of life's greatest gifts, and having you as a friend is a blessing I will always cherish."</em>
+                </p>
+                <div class="footer-hearts">💖 🌸 🎂 🌸 💖</div>
+                <p class="footer-credit">Handcrafted with love for <strong>Kowsi</strong> • Birthday 2026</p>
+                <a href="#home" class="back-to-top-btn"><i class="fa-solid fa-arrow-up"></i> Back to Top</a>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- ============================================ -->
+    <!-- 4. FULLSCREEN CINEMATIC FINALE OVERLAY       -->
+    <!-- ============================================ -->
+    <div id="cinematic-overlay" class="cinematic-overlay" aria-hidden="true">
+        <!-- FIREWORKS CANVAS -->
+        <canvas id="fireworks-canvas"></canvas>
+
+        <button id="close-cinematic-btn" class="close-cinematic-btn" title="Exit Finale">&times;</button>
+
+        <div class="cinematic-content">
+            <div class="cinematic-crown">👑</div>
+            <div id="cinematic-typewriter" class="cinematic-typewriter"></div>
+            
+            <div id="cinematic-badge" class="cinematic-badge" style="display: none;">
+                <h2 class="cinematic-queen-title">🌸 HAPPY BIRTHDAY KOWSI! 🌸</h2>
+                <p class="cinematic-queen-sub">May your year ahead be as breathtaking and extraordinary as you are!</p>
+                <div class="cinematic-actions">
+                    <button id="replay-fireworks-btn" class="btn btn-secondary">
+                        <i class="fa-solid fa-firework"></i> More Fireworks 🎆
+                    </button>
+                    <button id="exit-finale-btn" class="btn btn-primary">
+                        <i class="fa-solid fa-heart"></i> Love It! Return to Page 💖
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AUDIO PLAYER -->
+    <audio id="birthday-audio" preload="auto" loop>
+        <source src="assets/music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>
